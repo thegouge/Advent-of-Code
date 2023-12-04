@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -15,8 +16,9 @@ func main() {
 func Solve(fname string) {
 	readFile, err := os.Open(fname)
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 	}
+	defer readFile.Close()
 
 	fileScanner := bufio.NewScanner(readFile)
 
